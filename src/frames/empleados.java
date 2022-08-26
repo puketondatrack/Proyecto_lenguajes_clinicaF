@@ -23,7 +23,6 @@ public class empleados extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         con = conexionOracle.conectar();
         registro_empleados objeto = new registro_empleados();
-        MostrarRegistro();
     }
 
     public void insertar(registro_empleados objeto) throws SQLException {
@@ -77,7 +76,7 @@ public class empleados extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                Object[] fila = new Object[5];
+                Object[] fila = new Object[4];
                 fila[0] = rs.getString("id_empleado");
                 fila[1] = rs.getString("nombre_empleado");
                 fila[2] = rs.getString("puesto_empleado");
@@ -127,6 +126,7 @@ public class empleados extends javax.swing.JFrame {
         JBMODIFICAR = new javax.swing.JButton();
         JBELIMINAR = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -205,6 +205,13 @@ public class empleados extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Mostrar Empleados");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,6 +220,8 @@ public class empleados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -251,7 +260,8 @@ public class empleados extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
@@ -384,6 +394,10 @@ public class empleados extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MostrarRegistro();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -406,6 +420,7 @@ public class empleados extends javax.swing.JFrame {
     private javax.swing.JTextField JTFid_empleado;
     private javax.swing.JTextField JTFnombre_empleado;
     private javax.swing.JTextField JTFpuesto_empleado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
